@@ -1,10 +1,11 @@
 .header {
-  height: 5em;
+  height: 3.5em;
   width: 100%;
   background-color: #131921;
   position: sticky;
   top: 0;
   z-index: 100;
+
   /* display: flex;
 
   flex-wrap: nowrap;
@@ -20,6 +21,7 @@
   display: flex;
   gap: 0.5em;
   align-items: center;
+  height: 100%;
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
@@ -27,26 +29,27 @@
 }
 
 .header__logoContainer {
-  height: 5em;
+  height: 3em;
   width: 7em;
 
+  /* background-color: red; */
   object-fit: contain;
   text-align: center;
   position: relative;
 }
 .header__logoContainer h1 {
   position: absolute;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   text-align: center;
   color: #c70874;
   font-weight: 1000;
-  top: 3.6em;
+  top: 3.5em;
   left: 0;
   right: 0;
   bottom: 0;
 }
 .header__logo {
-  width: 5em;
+  width: 3em;
   object-fit: contain;
   margin-top: 0.2em;
 }
@@ -60,11 +63,15 @@
 
 .header__searchInput {
   padding: 0.5em 1em;
-  /* outline: none; */
-  outline-color: #c70874;
-  border: none;
-
+  outline: none;
+  /* border: none; */
+  border: 1px solid #131921;
   width: 100%;
+}
+.header__searchInput:focus {
+  box-shadow: 0 0 5px #c70874;
+  padding: 0.5em 1em;
+  border: 1px solid #c70874;
 }
 .header__searchIcon {
   padding: 0.2em;

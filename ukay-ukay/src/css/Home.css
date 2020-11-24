@@ -6,6 +6,13 @@
   max-width: 1200px;
   margin-bottom: 3em;
 }
+.home__banner {
+  width: 100%;
+  height: 75vh;
+  z-index: -1;
+  margin-bottom: -195px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
 
 .home__row {
   display: flex;
@@ -19,13 +26,6 @@
   z-index: 1;
   margin-left: 1em;
   margin-right: 1em; */
-}
-.home__banner {
-  width: 100%;
-  height: 75vh;
-  z-index: -1;
-  margin-bottom: -195px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
 @media all and (max-width: 700px) {
