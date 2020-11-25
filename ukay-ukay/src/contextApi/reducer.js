@@ -17,7 +17,7 @@ const reducer = (state, action) => {
         basket: [...state.basket, action.item],
       };
 
-    case "REMOVE_ONE_FROME_BASKET":
+    case "REMOVE_ONE_FROM_BASKET":
       //THIS WILL REMOVE ALL ITEMS WITH SAME ID.
       // return {
       //   ...state,

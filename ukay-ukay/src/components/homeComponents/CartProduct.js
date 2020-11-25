@@ -7,7 +7,7 @@ function CartProduct(props) {
   const [{ basket }, dispatch] = useStateValue();
   const removeOneFromBasket = () => {
     dispatch({
-      type: "REMOVE_ONE_FROME_BASKET",
+      type: "REMOVE_ONE_FROM_BASKET",
       id: props.id,
     });
   };

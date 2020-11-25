@@ -9,6 +9,7 @@ import Subcategory from "./components/homeComponents/Subcategory";
 import Item from "./components/homeComponents/Item";
 import Productview from "./components/homeComponents/Productview";
 import SignIn from "./components/authComponents/SignIn";
+import SignUp from "./components/authComponents/SignUp";
 import { auth } from "./firebase";
 import { useStateValue } from "./contextApi/StateProvider";
 
@@ -41,6 +42,9 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
+          <Route exact path="/signup">
+            <SignUp />
+          </Route>
           <Route exact path="/signin">
             <SignIn />
           </Route>

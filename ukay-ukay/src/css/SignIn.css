@@ -6,6 +6,7 @@
   background-color: white;
   margin-left: auto;
   margin-right: auto;
+
   height: 100vh;
   width: 60vh;
   display: flex;
@@ -107,6 +108,10 @@ label {
 }
 
 .signin__signupbutton {
+  width: 100%;
+}
+
+.signin__signupbutton button {
   padding: 0.7em 0.2em;
   border-radius: 0.2em;
   outline: none;
@@ -115,6 +120,6 @@ label {
   color: #ffffff;
   width: 100%;
 }
-.signin__signupbutton:hover {
+.signin__signupbutton button:hover {
   background-color: #f20c5c;
 }

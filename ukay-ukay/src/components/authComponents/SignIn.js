@@ -23,20 +23,20 @@ function SignIn() {
       .catch((error) => alert(error.message));
   };
 
-  const signUp = (e) => {
-    e.preventDefault();
+  //   const signUp = (e) => {
+  //     e.preventDefault();
 
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((auth) => {
-        //if successful create a new user with email and password
-        // console.log(auth);
-        if (auth) {
-          history.push("/");
-        }
-      })
-      .catch((error) => alert(error.message));
-  };
+  //     auth
+  //       .createUserWithEmailAndPassword(email, password)
+  //       .then((auth) => {
+  //         //if successful create a new user with email and password
+  //         // console.log(auth);
+  //         if (auth) {
+  //           history.push("/");
+  //         }
+  //       })
+  //       .catch((error) => alert(error.message));
+  //   };
   return (
     <div className="signin">
       <div className="signin__container">
@@ -49,9 +49,7 @@ function SignIn() {
         <div className="signin__formcontainer">
           <h1>Sign-in</h1>
           <form action="" className="signin__form">
-            <label htmlFor="email" className="signin__labelemail">
-              Email
-            </label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
               id="email"
@@ -61,9 +59,7 @@ function SignIn() {
               className="signin__input"
             />
 
-            <label htmlFor="password" className="signin__labelpassword">
-              Password
-            </label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
@@ -87,9 +83,11 @@ function SignIn() {
         </div>
 
         <p className="signin__new">New to Ukay2PH?</p>
-        <button onClick={signUp} className="signin__signupbutton">
-          Create your Ukay2PH account
-        </button>
+        <div className="signin__signupbutton">
+          <Link to={"/signup"}>
+            <button>Create your Ukay2PH account</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
