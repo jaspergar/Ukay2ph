@@ -18,6 +18,7 @@ function Cart() {
             <h2>Your Shopping Cart</h2>
             <p>Price</p>
           </div>
+          <div className="cart__item">
           {basket.map((item) => (
             <CartProduct
               id={item.id}
@@ -30,6 +31,7 @@ function Cart() {
               seller={item.seller}
             />
           ))}
+          </div>
         </div>
       </div>
       <div className="cart__right">
