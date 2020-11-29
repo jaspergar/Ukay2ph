@@ -11,6 +11,12 @@ export const getBasketTotal = (basket) =>
 const reducer = (state, action) => {
   console.log(action);
   switch (action.type) {
+
+    case "EMPTY_BASKET":
+      return{
+        ...state,
+        basket:[]
+      }
     case "ADD_TO_BASKET":
       return {
         ...state,
@@ -44,6 +50,8 @@ const reducer = (state, action) => {
         ...state,
         user: action.user,
       };
+
+      
     default:
       return state;
   }

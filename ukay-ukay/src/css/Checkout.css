@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   height: fit-content;
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .checkout__items {
@@ -43,11 +43,21 @@
 .checkout__addressinfo {
   display: flex;
   flex-direction: column;
+}
+.checkout__iteminfo,
+.checkout__paymentinfo,
+.checkout__addressinfo {
   flex: 0.8;
 }
-.checkout__iteminfo {
-  flex: 0.8;
-}
+
 .checkout__paymentinfo {
-  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.checkout__ordertotal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }

@@ -34,10 +34,13 @@ function CartProduct(props) {
               <p>⭐</p>
             ))}
         </div>
-        <button onClick={removeOneFromBasket}>Remove from cart</button>
+        {!props.hideButton && (
+          <button onClick={removeOneFromBasket}>Remove from cart</button>
+        )}
+       
       </div>
       <p className="cartproduct__price">
-        <small>P</small>
+        <small>&#8369;</small>
         <strong>{props.price}</strong>
       </p>
     </div>

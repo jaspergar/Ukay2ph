@@ -1,13 +1,49 @@
-import React, { Component } from "react";
+import React, { useState }  from 'react'
+import { useEffect } from "react";
+import { useStateValue } from "../../contextApi/StateProvider";
+import {db} from '../../firebase'
+import '../../css/Orders.css'
+import Order from './Order';
 
-class Orders extends Component {
-  render() {
-    return (
-      <div>
-        <h1>im at orders</h1>
-      </div>
-    );
-  }
+
+function Orders() {
+
+  const [orders, setOrders] = useState([]);
+  const [{basket,user},dispatch] = useStateValue();
+
+  useEffect(() =>{
+    if(user){
+      db.collection('users').doc(user?.uid).collection('orders').orderBy('created','desc')
+      .onSnapshot(snapShot => (
+        setOrders(snapShot.docs.map(doc => ({
+          id: doc.id,
+          data : doc.data()
+        })))
+      ))
+    }else{
+      setOrders([])
+    }
+   
+  },[user])
+
+  return (
+    <div className="orders">
+         <h1>Your Orders</h1>
+
+         <div className="orders__order"> 
+           {orders?.map(order => (
+             <Order order={order}/>
+           ))}
+
+          
+         </div>  
+    </div>
+  )
 }
 
-export default Orders;
+export default Orders
+
+
+
+
+

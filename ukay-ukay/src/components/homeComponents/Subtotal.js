@@ -16,7 +16,7 @@ function Subtotal() {
         renderText={(value) => (
           <>
             <p>
-              Subtotal ({basket.length} items): <strong>{value}</strong>
+              Subtotal ({basket.length} items): <strong><span>&#8369;</span>{value}</strong>
             </p>
 
             <small className="subtotal__gift">
@@ -29,7 +29,7 @@ function Subtotal() {
         value={getBasketTotal(basket)}
         displayType={"text"}
         thousandSeparator={true}
-        prefix={"P"}
+        // prefix={"P"}
       />
       <button onClick={e => history.push('/checkout')} className="subtotal__button">Proceed to checkout</button>
     </div>

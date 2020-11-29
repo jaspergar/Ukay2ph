@@ -43,7 +43,7 @@ function Product(props) {
               ))}
           </div>
           <p className="product__price">
-            <small>P</small>
+            <small>&#8369;</small>
             <strong>{props.price}</strong>
           </p>
         </div>

@@ -10,6 +10,7 @@
   max-height: 30em;
   min-width: 5em;
   background-color: #ffffff;
+  /* background-color: 1d1d1f; */
   z-index: 1;
   border-radius: 0.4em;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -31,11 +32,11 @@
   border-radius: 0.2em;
   outline: none;
   border: none;
-  background-color: #c70874;
+  background-color: var(--primary);
   color: #ffffff;
 }
 .subcategoryrow__button:hover {
-  background-color: #f20c5c;
+  background-color: var(--secondary);
   /* color: #111; */
 }
 
