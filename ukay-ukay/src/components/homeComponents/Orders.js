@@ -4,6 +4,7 @@ import { useStateValue } from "../../contextApi/StateProvider";
 import {db} from '../../firebase'
 import '../../css/Orders.css'
 import Order from './Order';
+import {withRouter} from 'react-router-dom';
 
 
 function Orders() {
@@ -12,7 +13,11 @@ function Orders() {
   const [{basket,user},dispatch] = useStateValue();
 
   useEffect(() =>{
+   let unmounted = false;
+
+  
     if(user){
+      if(!unmounted){
       db.collection('users').doc(user?.uid).collection('orders').orderBy('created','desc')
       .onSnapshot(snapShot => (
         setOrders(snapShot.docs.map(doc => ({
@@ -20,8 +25,15 @@ function Orders() {
           data : doc.data()
         })))
       ))
+      }
     }else{
       setOrders([])
+    }
+   
+   
+
+    return () => {
+      unmounted =true;
     }
    
   },[user])
@@ -41,7 +53,7 @@ function Orders() {
   )
 }
 
-export default Orders
+export default withRouter(Orders) 
 
 
 

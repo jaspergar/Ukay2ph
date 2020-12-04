@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -15,11 +15,14 @@ import { useStateValue } from "./contextApi/StateProvider";
 import Checkout from "./components/homeComponents/Checkout";
 import {loadStripe} from "@stripe/stripe-js";
 import {Elements} from "@stripe/react-stripe-js"
+import SecuredRoute from "./components/securityUtils/SecuredRoute";
+import Order from "./components/homeComponents/Order";
+
 
 const promise = loadStripe('pk_test_51HsSRdBO46BhwTv7bJ4q7CvdgX6H7O9yUbJWPhQIbgWwce7eW0IaVGeD6sEyeTLLOKRoDuPe0ByMO1PrYM92eAWD00JRMXQKRA');
 function App() {
-  const [{}, dispatch] = useStateValue();
-
+  const [{user}, dispatch] = useStateValue();
+  const [state, setstate] = useState('')
   //listener to always track of who is sign-in
   useEffect(() => {
     //Will only run once when the app component loads...
@@ -41,48 +44,60 @@ function App() {
       }
     });
   }, []);
+console.log(user);
+
 
   return (
     <Router>
       <div className="app">
-        <Switch>
-          <Route exact path="/signup">
-            <SignUp />
+      <Route exact path="/signup">
+                <SignUp />
           </Route>
           <Route exact path="/signin">
-            <SignIn />
+                <SignIn />
           </Route>
+      <Switch>
+         
           <Route exact path="/pview">
-            <Header />
-            <Productview />
+                <Header />
+                <Productview />
           </Route>
           <Route exact path="/items">
-            <Header />
-            <Item />
+                <Header />
+                <Item />
           </Route>
           <Route exact path="/subcategory">
-            <Header />
-            <Subcategory />
+                <Header />
+                <Subcategory />
           </Route>
           <Route exact path="/cart">
-            <Header />
-            <Cart />
+                <Header />
+                <Cart />
           </Route>
-          <Route exact path="/orders">
-            <Header />
-            <Orders />
-          </Route>
-          <Route exact path="/checkout">
-          <Header/>
-          <Elements stripe={promise}>
-            <Checkout/>
-            </Elements>
-          </Route>
+         
+         
+        
+       
+          <SecuredRoute path='/orders' component={props =>
+                <Fragment>
+                  <Header/>
+                  <Orders/>
+                </Fragment>
+              } />
+       
+       <SecuredRoute path='/checkout' component={props =>
+                <Fragment>
+                  <Header/>
+                  <Elements stripe={promise}>
+                    <Checkout/>
+                </Elements>
+                </Fragment>
+              } />
+              
           <Route exact path="/">
-            <Header />
-            <Home />
+                <Header />
+                <Home />
           </Route>
-
           {/* <Route exact path="/signin" component={SignIn} />
           <Route exact path="/pview" component={Productview} />
           <Route exact path="/items" component={Item} />

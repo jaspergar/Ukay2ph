@@ -1,5 +1,5 @@
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory,withRouter } from 'react-router-dom';
 import React, { useEffect, useState } from 'react'
 import { useStateValue } from '../../contextApi/StateProvider'
 import CartProduct from './CartProduct';
@@ -10,11 +10,15 @@ import { getBasketTotal } from '../../contextApi/reducer';
 import axios from '../../axios'
 import {db} from "../../firebase"
 
+
 function Checkout() {
     const [{basket,user},dispatch] = useStateValue();
  
+    
 
     const history = useHistory();
+
+   
     //stripe 
     const stripe = useStripe();
     const elements = useElements();
@@ -27,7 +31,7 @@ function Checkout() {
 
     useEffect(() => {
          //generate the special stripe secret which allows me to charge a customer
-         
+      
          const getClientSecret = async () => {
                const response = await axios({
                    method:"post",
@@ -156,4 +160,4 @@ function Checkout() {
     )
 }
 
-export default Checkout
+export default withRouter(Checkout)

@@ -10,7 +10,7 @@ const stripe = require('stripe')('sk_test_51HsSRdBO46BhwTv7rFOFB8JYmcdA9WA3l53Wg
 // - APP CONFIG
     const app = express();
 // - MIDDLEWARES
-     app.use(cors({origin: true}))
+     app.use(cors({origin:true}))
      app.use(express.json())
 // - API ROUTES
      app.get('/',(request,response) => response.status(200).send('hello world'))

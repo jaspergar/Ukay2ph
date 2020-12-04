@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import logo from "../../images/logo.png";
 import "../../css/SignIn.css";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../firebase";
+import { useStateValue } from "../../contextApi/StateProvider";
 
 function SignIn() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [{user},dispatch] = useStateValue();
+
+  useEffect (() => {
+    user && history.push('/') 
+  }, [user])
 
   const signIn = (e) => {
     e.preventDefault();
