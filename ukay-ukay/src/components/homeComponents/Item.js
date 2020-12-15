@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "../../css/Item.css";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Product from "./Product";
-import menTop from "../../images/menTop2.jpg";
+import menTop from "../../images/menTop.jpg";
+import menTop1 from "../../images/menTop1.jpg";
+import menTop2 from "../../images/menTop2.jpg";
 export class Item extends Component {
   render() {
     return (
@@ -49,90 +51,100 @@ export class Item extends Component {
               <Product
                 id={9}
                 image={menTop}
-                title="THE COMFY Original"
+                title="Forever21"
                 desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, odio."
-                rating={1}
-                price={132.55}
+                rating={5}
+                price={578.79}
                 delivery="free shipping"
                 seller="mr.gar"
               />
               <Product
                 id={8}
-                image={menTop}
+                image={menTop1}
                 title="THE COMFY Original"
                 desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, odio."
-                rating={1}
-                price={123334}
+                rating={5}
+                price={344.23}
                 delivery="free shipping"
                 seller="mr.gar"
               />
               <Product
                 id={7}
-                image={menTop}
-                title="THE COMFY Original"
+                image={menTop2}
+                title="Not Guilty"
                 desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, odio."
-                rating={1}
-                price={123334}
+                rating={5}
+                price={654.90}
                 delivery="free shipping"
                 seller="mr.gar"
               />
               <Product
                 id={6}
-                image={menTop}
+                image={menTop1}
                 title="THE COMFY Original"
                 desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, odio."
-                rating={1}
-                price={123334}
+                rating={5}
+                price={999.99}
                 delivery="free shipping"
                 seller="mr.gar"
               />
               <Product
                 id={5}
-                image={menTop}
-                title="THE COMFY Original"
+                image={menTop2}
+                title="UnderArmor"
                 desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, odio."
-                rating={1}
-                price={123334}
+                rating={5}
+                price={235.77}
                 delivery="free shipping"
                 seller="mr.gar"
               />
               <Product
                 id={4}
                 image={menTop}
-                title="THE COMFY Original"
+                title="H&M"
                 desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, odio."
-                rating={1}
-                price={123334}
+                rating={5}
+                price={998.77}
                 delivery="free shipping"
                 seller="mr.gar"
               />
               <Product
                 id={3}
-                image={menTop}
-                title="THE COMFY Original"
+                image={menTop2}
+                title="Nike"
                 desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, odio."
-                rating={1}
-                price={123334}
+                rating={5}
+                price={477.56}
                 delivery="free shipping"
                 seller="mr.gar"
               />
               <Product
                 id={2}
-                image={menTop}
-                title="THE COMFY Original"
+                image={menTop1}
+                title="Adidas"
                 desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, odio."
-                rating={1}
-                price={123334}
+                rating={5}
+                price={709.34}
                 delivery="free shipping"
                 seller="mr.gar"
               />
               <Product
                 id={1}
                 image={menTop}
-                title="THE COMFY Original"
+                title="Penshoppe"
                 desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, odio."
-                rating={1}
-                price={123334}
+                rating={5}
+                price={423.34}
+                delivery="free shipping"
+                seller="mr.gar"
+              />
+              <Product
+                id={10}
+                image={menTop2}
+                title="Penshoppe"
+                desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, odio."
+                rating={5}
+                price={599.34}
                 delivery="free shipping"
                 seller="mr.gar"
               />

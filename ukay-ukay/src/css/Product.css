@@ -55,8 +55,9 @@
   font-size: 0.9em;
   font-weight: 500;
 }
-.product_rating {
+.product__rating {
   display: flex;
+  flex-direction: row;
 }
 .product__price {
   margin-bottom: 0.5em;

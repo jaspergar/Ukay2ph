@@ -13,6 +13,7 @@
 .checkout__items > h1 {
   text-align: center;
   font-weight: 500;
+  font-size: 1.8em;
 }
 .checkout__items > h1 a {
   text-decoration: none;
@@ -55,9 +56,47 @@
   flex-direction: column;
   gap: 0.5em;
 }
+.checkout__paymentinfo > p {
+  font-size: 0.9em;
+  font-weight: 500;
+}
 
 .checkout__ordertotal {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 1em;
+  width: 40%;
+  border: 1px solid lightgrey;
+  padding: 2em;
+  margin: 1em 0;
+}
+
+.checkout__button {
+  padding: 0.7em 2em;
+  border-radius: 0.2em;
+  outline: none;
+  border: none;
+  background-color: #c70874;
+  color: #ffffff;
+}
+.checkout__button:hover {
+  background-color: #f20c5c;
+  /* color: #111; */
+}
+@media all and (max-width: 665px) {
+  .checkout__ordertotal {
+    width: 100%;
+  }
+}
+@media all and (max-width: 530px) {
+  .checkout__container {
+    flex-direction: column;
+  }
+}
+@media all and (max-width: 300px) {
+  .checkout__items > h1 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1em;
+  }
 }

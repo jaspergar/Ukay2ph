@@ -12,8 +12,12 @@ import {db} from "../../firebase"
 
 
 function Checkout() {
-    const [{basket,user},dispatch] = useStateValue();
- 
+  
+  
+
+    
+    
+    
     
 
     const history = useHistory();
@@ -28,26 +32,46 @@ function Checkout() {
     const[error, setError] =useState(null);
     const [disabled, setDisabled] = useState(true);
     const [clientSecret, setclientSecret] = useState(true);
+    const [userFullDetail, setUserFullDetail] = useState([]);
+
+    const [{basket,user},dispatch] = useStateValue();
+
+    
 
     useEffect(() => {
          //generate the special stripe secret which allows me to charge a customer
+      let cleanup =false
       
-         const getClientSecret = async () => {
-               const response = await axios({
-                   method:"post",
-                   //Stripe expects the total in a currencies subunits
-                   url:`/payments/create?total=${getBasketTotal(basket) * 100}`
-               })
-               setclientSecret(response.data.clientSecret)
-         }
     
+         const getClientSecret = async () => {
+             if(!cleanup){
+                const response = await axios({
+                    method:"post",
+                    //Stripe expects the total in a currencies subunits
+                    url:`/payments/create?total=${getBasketTotal(basket) * 100}`
+                })
+                setclientSecret(response.data.clientSecret)
+             }
+               
+         }
             getClientSecret();
+
+        if(user){
+            db.collection('users').doc(user?.uid).get().then(doc => {
+                setUserFullDetail(doc.data()) 
+            })
+        }
+            
+    return () => {
+        cleanup =true;
+      }
 
     }, [basket])
 
 
     console.log('The secret is >>>',clientSecret)
     console.log("user",user)
+    console.log("the user full details >>>",userFullDetail)
 
     const handleSubmit = async (e) =>{
            e.preventDefault();
@@ -98,11 +122,12 @@ function Checkout() {
               <h1>Delivery Address</h1>
               </div>
                <div className="checkout__addressinfo">
-                   <p>name</p>
-                   <p>{user?.email}, number</p>
-                   <p>full address</p>
+                   <p>{userFullDetail.fullname}</p>
+                   <p>{user?.email}, {userFullDetail.cnumber}</p>
+                   <p>{userFullDetail.address} &nbsp; {userFullDetail.detailAddress},{userFullDetail.zip}</p>
                </div>
                </div>
+
                <div className="checkout__container">
                <div className="checkout__title">
               <h1>Review Delivery Items</h1>
@@ -113,7 +138,7 @@ function Checkout() {
               id={item.id}
               title={item.title}
               delivery={item.delivery}
-              desc={item.description}
+              desc={item.desc}
               image={item.image}
               price={item.price}
               rating={item.rating}
@@ -122,6 +147,7 @@ function Checkout() {
               ))}
               </div>
                </div>
+
              <div className="checkout__container">
              <div className="checkout__title">
               <h1>Payment Method</h1>
@@ -144,7 +170,7 @@ function Checkout() {
                                             // prefix={"P"}
                                         />
                             
-                                        <button disabled={processing || disabled || succeeded}>
+                                        <button disabled={processing || disabled || succeeded} className="checkout__button">
                                         <span>{processing? <p>processing</p> : "Buy now"}</span>
                                         </button>
                             </div>

@@ -1,4 +1,4 @@
-import React, { isValidElement } from "react";
+import React, { isValidElement,useEffect,useState } from "react";
 import "../css/Header.css";
 import logo from "../images/logo.png";
 
@@ -10,9 +10,17 @@ import { auth } from "../firebase";
 
 function Header() {
   const [{ basket, user }, dispatch] = useStateValue();
+  const [isLoggedIn , setIsLoggedIn] = useState(false);
+
+  useEffect(()=>{
+       if(user){
+         setIsLoggedIn(true)
+       }
+  },[user])
 
   const handleAuthentication = () => {
     if (user) {
+      setIsLoggedIn(false);
       auth.signOut();
     }
   };
@@ -41,12 +49,22 @@ function Header() {
               </span>
             </div>
           </Link>
-          <Link to="/orders" className="header__link">
+          <Link to={user?"/orders":"/signup"} className="header__link">
             <div className="header__option">
-              <span className="header__optionOne">view</span>
-              <span className="header__optionTwo"> Orders</span>
+              <span className="header__optionOne">{user? "View my" : "No Account?"}</span>
+              <span className="header__optionTwo"> {user?"Orders" : "Sign Up"}</span>
             </div>
           </Link>
+          {
+            isLoggedIn &&
+            <Link to="/sellerOrder/myOrder" className="header__link" >
+            <div className="header__option" >
+              <span className="header__optionOne">Become a</span>
+              <span className="header__optionTwo">Seller</span>
+            </div>
+          </Link>
+          }
+          
           <Link className="header__link" to="/cart">
             <div className="header__basket">
               <ShoppingBasketIcon />

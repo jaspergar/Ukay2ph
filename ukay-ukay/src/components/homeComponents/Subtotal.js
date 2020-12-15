@@ -10,6 +10,14 @@ function Subtotal() {
   const [{ basket }, dispatch] = useStateValue();
   const history = useHistory();
 
+  const proceedToCheckout = e => {
+    e.preventDefault()
+
+   basket.length <= 0 ? alert("No item added to cart. Please add item to cart before checkout.") : history.push('/checkout')
+     
+    
+  }
+
   return (
     <div className="subtotal">
       <CurrencyFormat
@@ -19,10 +27,10 @@ function Subtotal() {
               Subtotal ({basket.length} items): <strong><span>&#8369;</span>{value}</strong>
             </p>
 
-            <small className="subtotal__gift">
+            {/* <small className="subtotal__gift">
               <input type="checkbox" />
               This order contains a gift
-            </small>
+            </small> */}
           </>
         )}
         decimalScale={2}
@@ -31,7 +39,7 @@ function Subtotal() {
         thousandSeparator={true}
         // prefix={"P"}
       />
-      <button onClick={e => history.push('/checkout')} className="subtotal__button">Proceed to checkout</button>
+      <button onClick={proceedToCheckout} className="subtotal__button">Proceed to checkout</button>
     </div>
   );
 }

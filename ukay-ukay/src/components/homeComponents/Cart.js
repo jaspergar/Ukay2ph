@@ -7,8 +7,10 @@ import CartProduct from "./CartProduct";
 import menTop from "../../images/menTop2.jpg";
 import { useStateValue } from "../../contextApi/StateProvider";
 function Cart() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket,user }, dispatch] = useStateValue();
 
+ 
+  console.log(basket)
   return (
     <div className="cart">
       <div className="cart__left">
@@ -24,7 +26,7 @@ function Cart() {
               id={item.id}
               title={item.title}
               delivery={item.delivery}
-              desc={item.description}
+              desc={item.desc}
               image={item.image}
               price={item.price}
               rating={item.rating}

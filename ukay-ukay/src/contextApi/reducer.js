@@ -1,6 +1,7 @@
 export const initialState = {
   basket: [],
   user: null,
+  userDetail : null
 };
 
 //selector, This will make a total of the price added into the cart
@@ -50,6 +51,11 @@ const reducer = (state, action) => {
         ...state,
         user: action.user,
       };
+      case "SET_USER_FULL_DETAIL":
+        return {
+          ...state,
+          userDetail: action.userDetail,
+        };
 
       
     default:

@@ -17,6 +17,11 @@ import {loadStripe} from "@stripe/stripe-js";
 import {Elements} from "@stripe/react-stripe-js"
 import SecuredRoute from "./components/securityUtils/SecuredRoute";
 import Order from "./components/homeComponents/Order";
+import SellerDashboard from "./components/sellerComponent/SellerDashboard";
+import SellerOrder from "./components/sellerComponent/sellerPages/SellerOrder";
+import {SellerProduct,SellerAddProduct} from "./components/sellerComponent/sellerPages/Product"
+import Report from "./components/sellerComponent/sellerPages/Report";
+
 
 
 const promise = loadStripe('pk_test_51HsSRdBO46BhwTv7bJ4q7CvdgX6H7O9yUbJWPhQIbgWwce7eW0IaVGeD6sEyeTLLOKRoDuPe0ByMO1PrYM92eAWD00JRMXQKRA');
@@ -43,7 +48,7 @@ function App() {
         });
       }
     });
-  }, []);
+  }, [user]);
 console.log(user);
 
 
@@ -56,28 +61,59 @@ console.log(user);
           <Route exact path="/signin">
                 <SignIn />
           </Route>
-      <Switch>
          
+      <Switch>
+     
           <Route exact path="/pview">
                 <Header />
                 <Productview />
           </Route>
           <Route exact path="/items">
-                <Header />
+          <Header />
                 <Item />
+                
           </Route>
           <Route exact path="/subcategory">
                 <Header />
                 <Subcategory />
           </Route>
-          <Route exact path="/cart">
-                <Header />
-                <Cart />
-          </Route>
+
+
+          <SecuredRoute path='/sellerOrder/myOrder' component={props =>
+                <Fragment>
+                  <Header/>
+                  <SellerDashboard children={SellerOrder}/>
+                </Fragment>
+              } />
+
+         <SecuredRoute path='/sellerProduct/myProduct' component={props =>
+                <Fragment>
+                  <Header/>
+                  <SellerDashboard children={SellerProduct}/>
+                </Fragment>
+              } />
+
+          <SecuredRoute path='/sellerProduct/addProduct' component={props =>
+                <Fragment>
+                  <Header/>
+                  <SellerDashboard children={SellerAddProduct}/>
+                </Fragment>
+              } />
+              <SecuredRoute path='/sellerReport/myReport' component={props =>
+                <Fragment>
+                  <Header/>
+                  <SellerDashboard children={Report}/>
+                </Fragment>
+              } />
          
+
+          <SecuredRoute path='/cart' component={props =>
+                <Fragment>
+                  <Header/>
+                  <Cart/>
+                </Fragment>
+              } />
          
-        
-       
           <SecuredRoute path='/orders' component={props =>
                 <Fragment>
                   <Header/>

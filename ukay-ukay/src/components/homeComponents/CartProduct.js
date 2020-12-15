@@ -18,12 +18,9 @@ function CartProduct(props) {
       </Link>
       <div className="cartproduct__info">
         <Link className="cartproduct__link" to="/pview">
-          <h3 className="cartproduct__title">title</h3>
+          <h3 className="cartproduct__title">{props.title}</h3>
           <p className="cartproduct__desc">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
-            tempore voluptatum tempora quos cum laudantium velit facere. Beatae
-            dolorem quas quis impedit blanditiis nam? Quidem, ratione.
-            Perspiciatis, soluta? Quo, quaerat?
+           {props.desc}
           </p>
         </Link>
         <p className="cartproduct__seller">by seller</p>

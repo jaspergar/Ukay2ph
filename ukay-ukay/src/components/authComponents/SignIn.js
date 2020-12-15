@@ -4,11 +4,14 @@ import "../../css/SignIn.css";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../firebase";
 import { useStateValue } from "../../contextApi/StateProvider";
+import classnames from "classnames"
 
 function SignIn() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors,setErrors] = useState('');
+
   const [{user},dispatch] = useStateValue();
 
   useEffect (() => {
@@ -26,7 +29,7 @@ function SignIn() {
           history.push("/");
         }
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => setErrors(error.message));
   };
 
   //   const signUp = (e) => {
@@ -53,6 +56,9 @@ function SignIn() {
           </div>
         </Link>
         <div className="signin__formcontainer">
+        {errors && (
+                    <div className="invalid-feedback">{errors}</div>
+                  )}
           <h1>Sign-in</h1>
           <form action="" className="signin__form">
             <label htmlFor="email">Email</label>
@@ -62,7 +68,9 @@ function SignIn() {
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="signin__input"
+              className={classnames("signin__input",{
+                "is-invalid": errors
+              })}
             />
 
             <label htmlFor="password">Password</label>
@@ -72,7 +80,9 @@ function SignIn() {
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="signin__input"
+              className={classnames("signin__input",{
+                "is-invalid": errors
+              })}
             />
             <button
               type="submit"

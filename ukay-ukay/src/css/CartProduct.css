@@ -72,7 +72,7 @@ small {
   color: #111;
 }
 
-@media all and (max-width: 550px) {
+@media all and (max-width: 630px) {
   .cartproduct {
     flex-direction: column;
     align-items: center;

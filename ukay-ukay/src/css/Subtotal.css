@@ -2,27 +2,28 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   min-height: 50%;
   width: 100%;
   padding: 1em 2em;
   background-color: #f3f3f3;
   border: 1px solid #dddddd;
-  /* gap: 1em; */
+  gap: 1em;
   border-radius: 3px;
+  justify-content: center;
 }
 .subtotal > p {
   font-size: 1.3em;
   font-weight: 500;
 }
-.subtotal__gift {
+/* .subtotal__gift {
   display: flex;
   align-items: center;
   font-size: 1em;
 }
 .subtotal__gift > input {
   margin-right: 0.5em;
-}
+} */
 .subtotal > button {
   padding: 0.7em 2em;
   border-radius: 0.2em;
